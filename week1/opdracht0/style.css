@@ -29,13 +29,16 @@
     height: 5vh;
     margin-bottom: 1vh;
 }
-.cookie .btn #deny {
-    width: 5vw;
-    height: 5vh;
-    margin-bottom: 1vh;
-}
 body {
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+.jonkie {
+    display: flex;
+    align-items: center;
+    font-size: 10vw;
+}
+.rood {
+    background-color: red;
 }
