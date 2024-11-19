@@ -1,0 +1,41 @@
+.cookie {
+    display: none;
+    justify-content: center;
+    flex-direction: column;
+    border-color: black;
+    border: solid;
+    border-width: 5px;
+    width: 40vw;
+    border-radius: 10px;
+    padding: 0px;
+}
+.cookie h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 7vh;
+}
+.cookie p {
+    display: flex;
+    justify-content: center;
+    font-size: 5vh;
+}
+.cookie .btn {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.cookie .btn #accept {
+    width: 5vw;
+    height: 5vh;
+    margin-bottom: 1vh;
+}
+.cookie .btn #deny {
+    width: 5vw;
+    height: 5vh;
+    margin-bottom: 1vh;
+}
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
