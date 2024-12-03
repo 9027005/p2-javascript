@@ -1,22 +1,16 @@
 let tien = 10
 let tafelVtien = []
+let output = document.getElementById("prdct")
 
 //for (i = 0; i <=10; i++) { let product = i*tien; tafelVtien.push(i +"x"+tien + '='+ product)}
 //document.getElementById("prdct").innerHTML = tafelVtien.join("<br>")
 
-let input = document.getElementById("btn")
-let inputVar = input.value
 
-
-function tafel_van(num1) {
+function tafel_van() {
     //console.log(num1)
-    //num1 = input.value
+    let input = document.getElementById("input").value
     for (i = 0; i <=10; i++) { 
-        
-        let product = i*num1; 
-        tafelVtien.push(i +"x"+num1 + '='+ product)
+        output.innerHTML +=  i + " x " + input + " = " + i * input + "<br>";
     }
 }
-tafel_van(input.value)
-
-document.getElementById("prdct").innerHTML = tafelVtien.join("<br>")
+console.log(input.value)
