@@ -1,6 +1,6 @@
 let block = document.getElementById("block")
 let width = window.innerWidth
-let  positie = 0
+let positie = 0
 let color = ["red","blue","yellow","green"]
 
 const timer = setInterval(function(){
