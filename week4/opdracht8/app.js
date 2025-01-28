@@ -3,7 +3,7 @@ let positie = 0;
 let verical = 0
 
 window.addEventListener('keydown', function(e){
-
+    console.log(e)
     if(e.key == "d"){
         positie += 20;
         block.style.left = positie + 'px';
