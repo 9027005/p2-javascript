@@ -1,5 +1,7 @@
 let sBtn = document.getElementById("startBtn")
 let gameArea = document.getElementById("gameArea")
+let char = document.getElementById("char")
+let lvl = document.getElementById("lvl1")
 let gameStart = false
 let started = false
 let heightS = 10
@@ -9,6 +11,14 @@ let r = 35
 let g = 64
 let b = 153
 let radius = 10
+let level = false
+
+let up = false
+let down = false
+let left = false
+let right = false
+let x = 0
+let y = 0
 
 let a = 0
 let easyBtn = document.getElementById("easy")
@@ -27,6 +37,32 @@ window.addEventListener('keypress', function(e){
         gameStart = true
         started = true
     }
+
+    if(e.code == "KeyW" && level) {
+        up = true
+        down = false
+        left = false
+        right = false
+    }
+    if(e.code == "KeyS" && level) {
+        up = false
+        down = true
+        left = false
+        right = false
+    }
+    if(e.code == "KeyA" && level) {
+        up = false
+        down = false
+        left = true
+        right = false
+    }
+    if(e.code == "KeyD" && level) {
+        up = false
+        down = false
+        left = false
+        right = true
+    }
+    
 })
 
 function screenGrow() {
@@ -90,13 +126,76 @@ possibleChoices.forEach(button => button.addEventListener('click', (e) => {
     console.log(choice)
     if(choice == "easy") {
         level1()
+    } else if(choice == "medium") {
+        level2()
+    } else if(choice == "hard") {
+        level3()
     }
-
 }))
 
 function level1() {
-    document.getElementById("lvl1").style.display = "flex"
+    lvl.style.display = "flex"
     gameStart = false
-    console.log("hoera")
+    level = true
     buttons()
+}
+function level2() {
+    lvl.style.display = "flex"
+    gameStart = false
+    buttons()
+}
+function level3() {
+    lvl.style.display = "flex"
+    gameStart = false
+    buttons()
+}
+
+const timer = setInterval(() => {
+    if (up) {
+        y -= 1
+        char.style.marginTop = y + "vh"
+    } else if(down) {
+        y += 1
+        char.style.marginTop = y + "vh"
+    }
+    if (left) {
+        x -= 1
+        char.style.marginLeft = x + "vh"
+    } else if(right) {
+        x += 1
+        char.style.marginLeft = x + "vh"
+    }
+    
+}, 100);
+
+let box1 = document.getElementById("obstacle1-1")
+let box2 = document.getElementById("obstacle1-2")
+let box3 = document.getElementById("obstacle1-3")
+let box4 = document.getElementById("obstacle1-4")
+let box5 = document.getElementById("obstacle1-5")
+let box6 = document.getElementById("obstacle1-6")
+let box7 = document.getElementById("obstacle2-1")
+let box8 = document.getElementById("obstacle2-2")
+let box9 = document.getElementById("obstacle2-3")
+let box10 = document.getElementById("obstacle2-4")
+let box11 = document.getElementById("obstacle2-5")
+let box12 = document.getElementById("obstacle2-6")
+let box13 = document.getElementById("obstacle2-7")
+let box14 = document.getElementById("obstacle2-8")
+let box15 = document.getElementById("obstacle2-9")
+let box16 = document.getElementById("obstacle2-10")
+let box17 = document.getElementById("obstacle2-11")
+let box18 = document.getElementById("obstacle2-12")
+let box19 = document.getElementById("obstacle2-13")
+let box20 = document.getElementById("obstacle2-14")
+
+const charRect = char.getBoundingClientRect()
+const boxOne = box1.getBoundingClientRect()
+
+setInterval(Collide, 10)
+function Collide() {
+    if (charRect > boxOne && boxOne > charRect && charRect.bottom > boxOne.top && boxOne.bottom > charRect.top) {
+        left = false
+        right = false
+    }
 }
