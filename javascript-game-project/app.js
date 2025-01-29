@@ -4,6 +4,22 @@ const char = document.getElementById("char")
 let ghost1 = document.getElementById("ghost1")
 let ghost2 = document.getElementById("ghost2")
 let ghost3 = document.getElementById("ghost3")
+let score = document.getElementById("score")
+
+let scoreCounter = 0
+let countScore = false
+let lost = false
+
+let rX = 150
+let bX = 60
+let pX = 35
+let rY = -30
+let bY = 50
+let pY = -30
+let ghosts1 = false
+let ghosts2 = false
+let ghosts3 = false
+
 let lvl = document.getElementById("lvl1")
 let gameStart = false
 let started = false
@@ -126,6 +142,12 @@ function buttons() {
             easyBtn.style.display = "flex"
             medBtn.style.display = "flex"
             hardBtn.style.display = "flex"
+            char.style.display = "none"
+            ghost1.style.display = "none"
+            ghost2.style.display = "none"
+            ghost3.style.display = "none"
+            lvl.style.display = "none"
+            score.style.display = "none"
         }
         if(i == 10) {
             easyBtn.innerText = "1"
@@ -152,10 +174,13 @@ possibleChoices.forEach(button => button.addEventListener('click', (e) => {
     console.log(choice)
     if(choice == "easy") {
         level1()
+        
     } else if(choice == "medium") {
         level2()
+        
     } else if(choice == "hard") {
         level3()
+        
     }
 }))
 
@@ -164,27 +189,39 @@ function level1() {
     char.style.display = "flex"
     pipe1.style.display = "flex"
     pipe2.style.display = "flex"
+    score.style.display = "flex"
     gameStart = false
     level = true
     buttons()
+    ghosts1 = true
+    countScore = true
+    lost = false
 }
 function level2() {
     lvl.style.display = "flex"
     char.style.display = "flex"
     pipe1.style.display = "flex"
     pipe2.style.display = "flex"
+    score.style.display = "flex"
     gameStart = false
     level = true
     buttons()
+    ghosts2 = true
+    countScore = true
+    lost = false
 }
 function level3() {
     lvl.style.display = "flex"
     char.style.display = "flex"
     pipe1.style.display = "flex"
     pipe2.style.display = "flex"
+    score.style.display = "flex"
     gameStart = false
     level = true
     buttons()
+    ghosts3 = true
+    countScore = true
+    lost = false
 }
 
 const timer = setInterval(() => {
@@ -597,12 +634,156 @@ function pipes() {
         x = 35
     }
 }
-function ghosts1() {
+
+const ghostTime = setInterval(() => {
+    if(ghosts1) {
+        ghosts2 = false
+        ghosts3 = false
+
+        ghost1.style.display = "flex"
+
+        let charRect = char.getBoundingClientRect()
+        let g1 = ghost1.getBoundingClientRect()
+
+        if(g1.right < charRect.right) {
+            rX += 0.3
+        } else if(g1.right > charRect.right) {
+            rX -= 0.3
+        }
+        if (g1.top > charRect.top) {
+            rY -= 0.3
+        } else if(g1.top < charRect.top) {
+            rY += 0.3
+        }
+
+        ghost1.style.marginLeft = rX + "vh"
+        ghost1.style.marginTop = rY + "vh"
+    }
+    if(ghosts2) {
+        ghosts1 = false
+        ghosts3 = false
+        ghost1.style.display = "flex"
+        ghost2.style.display = "flex"
+
+        let charRect = char.getBoundingClientRect()
+        let g1 = ghost1.getBoundingClientRect()
+        let g2 = ghost2.getBoundingClientRect()
+
+        if(g1.right < charRect.right) {
+            rX += 0.3
+        } else if(g1.right > charRect.right) {
+            rX -= 0.3
+        }
+        if (g1.top > charRect.top) {
+            rY -= 0.3
+        } else if(g1.top < charRect.top) {
+            rY += 0.3
+        }
+        if(g2.right < charRect.right) {
+            bX += 0.2
+        } else if(g2.right > charRect.right) {
+            bX -= 0.2
+        }
+        if (g2.top > charRect.top) {
+            bY -= 0.2
+        } else if(g2.top < charRect.top) {
+            bY += 0.2
+        }
+
+        ghost1.style.marginLeft = rX + "vh"
+        ghost1.style.marginTop = rY + "vh"
+        ghost2.style.marginLeft = bX + "vh"
+        ghost2.style.marginTop = bY + "vh"
+    }
+    if(ghosts3) {
+        ghosts1 = false
+        ghosts2 = false
+        ghost1.style.display = "flex"
+        ghost2.style.display = "flex"
+        ghost3.style.display = "flex"
+
+        let charRect = char.getBoundingClientRect()
+        let g1 = ghost1.getBoundingClientRect()
+        let g2 = ghost2.getBoundingClientRect()
+        let g3 = ghost3.getBoundingClientRect()
+
+        if(g1.right < charRect.right) {
+            rX += 0.3
+        } else if(g1.right > charRect.right) {
+            rX -= 0.3
+        }
+        if (g1.top > charRect.top) {
+            rY -= 0.3
+        } else if(g1.top < charRect.top) {
+            rY += 0.3
+        }
+        if(g2.right < charRect.right) {
+            bX += 0.2
+        } else if(g2.right > charRect.right) {
+            bX -= 0.2
+        }
+        if (g2.top > charRect.top) {
+            bY -= 0.2
+        } else if(g2.top < charRect.top) {
+            bY += 0.2
+        }
+        if(g3.right < charRect.right) {
+            pX += 0.05
+        } else if(g3.right > charRect.right) {
+            pX -= 0.05
+        }
+        if (g3.top > charRect.top) {
+            pY -= 0.05
+        } else if(g3.top < charRect.top) {
+            pY += 0.05
+        }
+
+        ghost1.style.marginLeft = rX + "vh"
+        ghost1.style.marginTop = rY + "vh"
+        ghost2.style.marginLeft = bX + "vh"
+        ghost2.style.marginTop = bY + "vh"
+        ghost3.style.marginLeft = pX + "vh"
+        ghost3.style.marginTop = pY + "vh"
+    }
     
-}
-function ghosts2() {
+}, 50);
 
+setInterval(points, 1000);
+function points() {
+    if(countScore) {
+        scoreCounter += 50
+    }
+    score.innerText = "TIME: " + scoreCounter
 }
-function ghosts3() {
 
+setInterval(lose, 10);
+function lose() {
+    let charRect = char.getBoundingClientRect()
+    let g1 = ghost1.getBoundingClientRect()
+    let g2 = ghost2.getBoundingClientRect()
+    let g3 = ghost3.getBoundingClientRect()
+
+    if (
+        charRect.left < g1.right &&
+        charRect.right > g1.left &&
+        charRect.top < g1.bottom &&
+        charRect.bottom > g1.top
+    ) {
+        if (charRect.left < g1.right && charRect.right > g1.right) {
+            lost = true
+        }
+        if (charRect.top < g1.bottom && charRect.bottom > g1.bottom) {
+            lost = true
+            
+        }
+        if (charRect.bottom > g1.top && charRect.top < g1.top) {
+            lost = true
+        }
+        if(charRect.right > g1.left && charRect.left < g1.left) {
+            lost = true
+        }
+    }
+    if(lost) {
+        window.location.reload()
+    }
 }

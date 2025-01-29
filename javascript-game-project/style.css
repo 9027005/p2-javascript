@@ -626,13 +626,16 @@ table {
     height: 2vw;
     position: absolute;
     display: none;
+    margin-left: 150vh;
 }
 #ghost2 {
-    background-color: orange;
+    background-color: brown;
     width: 2vw;
     height: 2vw;
     position: absolute;
     display: none;
+    margin-left: 60vh;
+    margin-top: 50vh;
 }
 #ghost3 {
     background-color: purple;
@@ -640,4 +643,18 @@ table {
     height: 2vw;
     position: absolute;
     display: none;
+    margin-left: 35vh;
+    margin-top: -30vh;
+}
+#score {
+    background-color: #000000;
+    color: white;
+    width: 7vw;
+    height: 5vh;
+    position: absolute;
+    display: none;
+    margin-top: -70vh;
+    margin-left: 2vw;
+    border-radius: 10px;
+    padding: 10px;
 }
