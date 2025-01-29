@@ -1,6 +1,6 @@
 let sBtn = document.getElementById("startBtn")
 let gameArea = document.getElementById("gameArea")
-let char = document.getElementById("char")
+const char = document.getElementById("char")
 let lvl = document.getElementById("lvl1")
 let gameStart = false
 let started = false
@@ -17,8 +17,8 @@ let up = false
 let down = false
 let left = false
 let right = false
-let x = 0
-let y = 0
+let x = 35
+let y = 50
 
 let a = 0
 let easyBtn = document.getElementById("easy")
@@ -135,38 +135,43 @@ possibleChoices.forEach(button => button.addEventListener('click', (e) => {
 
 function level1() {
     lvl.style.display = "flex"
+    char.style.display = "flex"
     gameStart = false
     level = true
     buttons()
 }
 function level2() {
     lvl.style.display = "flex"
+    char.style.display = "flex"
     gameStart = false
+    level = true
     buttons()
 }
 function level3() {
     lvl.style.display = "flex"
+    char.style.display = "flex"
     gameStart = false
+    level = true
     buttons()
 }
 
 const timer = setInterval(() => {
     if (up) {
-        y -= 1
-        char.style.marginTop = y + "vh"
+        y -= 0.5
+        char.style.top = y + "vh"
     } else if(down) {
-        y += 1
-        char.style.marginTop = y + "vh"
+        y += 0.5
+        char.style.top = y + "vh"
     }
     if (left) {
-        x -= 1
-        char.style.marginLeft = x + "vh"
+        x -= 0.5
+        char.style.left = x + "vh"
     } else if(right) {
-        x += 1
-        char.style.marginLeft = x + "vh"
+        x += 0.5
+        char.style.left = x + "vh"
     }
     
-}, 100);
+}, 50);
 
 let box1 = document.getElementById("obstacle1-1")
 let box2 = document.getElementById("obstacle1-2")
@@ -189,13 +194,102 @@ let box18 = document.getElementById("obstacle2-12")
 let box19 = document.getElementById("obstacle2-13")
 let box20 = document.getElementById("obstacle2-14")
 
-const charRect = char.getBoundingClientRect()
-const boxOne = box1.getBoundingClientRect()
 
 setInterval(Collide, 10)
 function Collide() {
-    if (charRect > boxOne && boxOne > charRect && charRect.bottom > boxOne.top && boxOne.bottom > charRect.top) {
-        left = false
-        right = false
+    let charRect = char.getBoundingClientRect();
+    let boxA = box1.getBoundingClientRect();
+    let boxB = box2.getBoundingClientRect();
+    let boxC = box3.getBoundingClientRect();
+    let boxD = box4.getBoundingClientRect();
+    let boxE = box5.getBoundingClientRect();
+    let boxF = box6.getBoundingClientRect();
+    let boxG = box7.getBoundingClientRect();
+    let boxH = box8.getBoundingClientRect();
+    let boxI = box9.getBoundingClientRect();
+    let boxJ = box10.getBoundingClientRect();
+    let boxK = box11.getBoundingClientRect();
+    let boxL = box12.getBoundingClientRect();
+    let boxM = box13.getBoundingClientRect();
+    let boxN = box14.getBoundingClientRect();
+    let boxO = box15.getBoundingClientRect();
+    let boxP = box16.getBoundingClientRect();
+    let boxQ = box17.getBoundingClientRect();
+    let boxR = box18.getBoundingClientRect();
+    let boxS = box19.getBoundingClientRect();
+    let boxT = box20.getBoundingClientRect();
+
+    // Controleer of er een botsing is
+    if (
+        charRect.left < boxA.right &&
+        charRect.right > boxA.left &&
+        charRect.top < boxA.bottom &&
+        charRect.bottom > boxA.top
+    ) {
+        // Controleer of de botsing van rechts komt
+        if (charRect.left < boxA.right && charRect.right > boxA.right) {
+            left = false;
+        }
+
+        // Controleer of de botsing van onder komt
+        if (charRect.top < boxA.bottom && charRect.bottom > boxA.bottom) {
+            up = false;
+            
+        }
+    }
+    if (
+        charRect.left < boxB.right &&
+        charRect.right > boxB.left &&
+        charRect.top < boxB.bottom &&
+        charRect.bottom > boxB.top
+    ) {
+        if (charRect.left < boxB.right && charRect.right > boxB.right) {
+            left = false;
+        }
+
+        // Controleer of de botsing van boven komt
+        if (charRect.bottom > boxB.top && charRect.top < boxB.top) {
+            down = false;
+            
+        }
+    }
+    if (
+        charRect.left < boxC.right &&
+        charRect.right > boxC.left &&
+        charRect.top < boxC.bottom &&
+        charRect.bottom > boxC.top
+    ) {
+
+        // Controleer of de botsing van onder komt
+        if (charRect.top < boxC.bottom && charRect.bottom > boxC.bottom) {
+            up = false;
+            
+        }
+    }
+    if (
+        charRect.left < boxD.right &&
+        charRect.right > boxD.left &&
+        charRect.top < boxD.bottom &&
+        charRect.bottom > boxD.top
+    ) {
+
+        // Controleer of de botsing van boven komt
+        if (charRect.bottom > boxD.top && charRect.top < boxD.top) {
+            down = false;
+            
+        }
+    }
+    if (
+        charRect.left < boxE.right &&
+        charRect.right > boxE.left &&
+        charRect.top < boxE.bottom &&
+        charRect.bottom > boxE.top
+    ) {
+
+        // Controleer of de botsing van boven komt
+        if (charRect.bottom > boxE.top && charRect.top < boxE.top) {
+            down = false;
+            
+        }
     }
 }

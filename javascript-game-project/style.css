@@ -454,7 +454,7 @@ table {
     position: absolute;
     width: 2.5vw;
     height: 30vh;
-    background-color: blue;
+    background-color: red;
     
 }
 #obstacle1-6 {
@@ -594,8 +594,11 @@ table {
     width: 15vw;
 }
 #char {
+    display: none;
     position: absolute;
     width: 2vw;
     height: 2vw;
-    background-color: red;
+    background-color: yellow;
+    left: 35vh;
+    top: 50vh;
 }
