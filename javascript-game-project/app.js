@@ -1,6 +1,9 @@
 let sBtn = document.getElementById("startBtn")
 let gameArea = document.getElementById("gameArea")
 const char = document.getElementById("char")
+let ghost1 = document.getElementById("ghost1")
+let ghost2 = document.getElementById("ghost2")
+let ghost3 = document.getElementById("ghost3")
 let lvl = document.getElementById("lvl1")
 let gameStart = false
 let started = false
@@ -26,6 +29,29 @@ let medBtn = document.getElementById("medium")
 let hardBtn = document.getElementById("hard")
 let lvls = document.getElementById("lvls")
 let choice = ""
+
+let pipe1 = document.getElementById("pipe1")
+let pipe2 = document.getElementById("pipe2")
+let box1 = document.getElementById("obstacle1-1")
+let box2 = document.getElementById("obstacle1-2")
+let box3 = document.getElementById("obstacle1-3")
+let box4 = document.getElementById("obstacle1-4")
+let box5 = document.getElementById("obstacle1-5")
+let box6 = document.getElementById("obstacle1-6")
+let box7 = document.getElementById("obstacle2-1")
+let box8 = document.getElementById("obstacle2-2")
+let box9 = document.getElementById("obstacle2-3")
+let box10 = document.getElementById("obstacle2-4")
+let box11 = document.getElementById("obstacle2-5")
+let box12 = document.getElementById("obstacle2-6")
+let box13 = document.getElementById("obstacle2-7")
+let box14 = document.getElementById("obstacle2-8")
+let box15 = document.getElementById("obstacle2-9")
+let box16 = document.getElementById("obstacle2-10")
+let box17 = document.getElementById("obstacle2-11")
+let box18 = document.getElementById("obstacle2-12")
+let box19 = document.getElementById("obstacle2-13")
+let box20 = document.getElementById("obstacle2-14")
 
 
 window.addEventListener('keypress', function(e){
@@ -136,6 +162,8 @@ possibleChoices.forEach(button => button.addEventListener('click', (e) => {
 function level1() {
     lvl.style.display = "flex"
     char.style.display = "flex"
+    pipe1.style.display = "flex"
+    pipe2.style.display = "flex"
     gameStart = false
     level = true
     buttons()
@@ -143,6 +171,8 @@ function level1() {
 function level2() {
     lvl.style.display = "flex"
     char.style.display = "flex"
+    pipe1.style.display = "flex"
+    pipe2.style.display = "flex"
     gameStart = false
     level = true
     buttons()
@@ -150,6 +180,8 @@ function level2() {
 function level3() {
     lvl.style.display = "flex"
     char.style.display = "flex"
+    pipe1.style.display = "flex"
+    pipe2.style.display = "flex"
     gameStart = false
     level = true
     buttons()
@@ -172,28 +204,6 @@ const timer = setInterval(() => {
     }
     
 }, 50);
-
-let box1 = document.getElementById("obstacle1-1")
-let box2 = document.getElementById("obstacle1-2")
-let box3 = document.getElementById("obstacle1-3")
-let box4 = document.getElementById("obstacle1-4")
-let box5 = document.getElementById("obstacle1-5")
-let box6 = document.getElementById("obstacle1-6")
-let box7 = document.getElementById("obstacle2-1")
-let box8 = document.getElementById("obstacle2-2")
-let box9 = document.getElementById("obstacle2-3")
-let box10 = document.getElementById("obstacle2-4")
-let box11 = document.getElementById("obstacle2-5")
-let box12 = document.getElementById("obstacle2-6")
-let box13 = document.getElementById("obstacle2-7")
-let box14 = document.getElementById("obstacle2-8")
-let box15 = document.getElementById("obstacle2-9")
-let box16 = document.getElementById("obstacle2-10")
-let box17 = document.getElementById("obstacle2-11")
-let box18 = document.getElementById("obstacle2-12")
-let box19 = document.getElementById("obstacle2-13")
-let box20 = document.getElementById("obstacle2-14")
-
 
 setInterval(Collide, 10)
 function Collide() {
@@ -226,12 +236,9 @@ function Collide() {
         charRect.top < boxA.bottom &&
         charRect.bottom > boxA.top
     ) {
-        // Controleer of de botsing van rechts komt
         if (charRect.left < boxA.right && charRect.right > boxA.right) {
             left = false;
         }
-
-        // Controleer of de botsing van onder komt
         if (charRect.top < boxA.bottom && charRect.bottom > boxA.bottom) {
             up = false;
             
@@ -246,8 +253,6 @@ function Collide() {
         if (charRect.left < boxB.right && charRect.right > boxB.right) {
             left = false;
         }
-
-        // Controleer of de botsing van boven komt
         if (charRect.bottom > boxB.top && charRect.top < boxB.top) {
             down = false;
             
@@ -259,8 +264,6 @@ function Collide() {
         charRect.top < boxC.bottom &&
         charRect.bottom > boxC.top
     ) {
-
-        // Controleer of de botsing van onder komt
         if (charRect.top < boxC.bottom && charRect.bottom > boxC.bottom) {
             up = false;
             
@@ -272,8 +275,6 @@ function Collide() {
         charRect.top < boxD.bottom &&
         charRect.bottom > boxD.top
     ) {
-
-        // Controleer of de botsing van boven komt
         if (charRect.bottom > boxD.top && charRect.top < boxD.top) {
             down = false;
             
@@ -285,11 +286,323 @@ function Collide() {
         charRect.top < boxE.bottom &&
         charRect.bottom > boxE.top
     ) {
-
-        // Controleer of de botsing van boven komt
-        if (charRect.bottom > boxE.top && charRect.top < boxE.top) {
-            down = false;
-            
+        if (charRect.top < boxE.bottom && charRect.bottom > boxE.bottom) {
+            up = false;
+        }
+        if(charRect.right > boxE.left && charRect.left < boxE.left) {
+            right = false
         }
     }
+    if (
+        charRect.left < boxF.right &&
+        charRect.right > boxF.left &&
+        charRect.top < boxF.bottom &&
+        charRect.bottom > boxF.top
+    ) {
+        if (charRect.bottom > boxF.top && charRect.top < boxF.top) {
+            down = false;
+        }
+        if(charRect.right > boxF.left && charRect.left < boxF.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxG.right &&
+        charRect.right > boxG.left &&
+        charRect.top < boxG.bottom &&
+        charRect.bottom > boxG.top
+    ) {
+        if (charRect.left < boxG.right && charRect.right > boxG.right) {
+            left = false;
+        }
+        if (charRect.top < boxG.bottom && charRect.bottom > boxG.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxG.top && charRect.top < boxG.top) {
+            down = false;
+        }
+    }
+    if (
+        charRect.left < boxH.right &&
+        charRect.right > boxH.left &&
+        charRect.top < boxH.bottom &&
+        charRect.bottom > boxH.top
+    ) {
+        if (charRect.left < boxH.right && charRect.right > boxH.right) {
+            left = false;
+        }
+        if (charRect.top < boxH.bottom && charRect.bottom > boxH.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxH.top && charRect.top < boxH.top) {
+            down = false;
+        }
+        if(charRect.right > boxH.left && charRect.left < boxH.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxI.right &&
+        charRect.right > boxI.left &&
+        charRect.top < boxI.bottom &&
+        charRect.bottom > boxI.top
+    ) {
+        if (charRect.left < boxI.right && charRect.right > boxI.right) {
+            left = false;
+        }
+        if (charRect.top < boxI.bottom && charRect.bottom > boxI.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxI.top && charRect.top < boxI.top) {
+            down = false;
+        }
+        if(charRect.right > boxI.left && charRect.left < boxI.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxJ.right &&
+        charRect.right > boxJ.left &&
+        charRect.top < boxJ.bottom &&
+        charRect.bottom > boxJ.top
+    ) {
+        if (charRect.left < boxJ.right && charRect.right > boxJ.right) {
+            left = false;
+        }
+        if (charRect.top < boxJ.bottom && charRect.bottom > boxJ.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxJ.top && charRect.top < boxJ.top) {
+            down = false;
+        }
+        if(charRect.right > boxJ.left && charRect.left < boxJ.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxK.right &&
+        charRect.right > boxK.left &&
+        charRect.top < boxK.bottom &&
+        charRect.bottom > boxK.top
+    ) {
+        if (charRect.left < boxK.right && charRect.right > boxK.right) {
+            left = false;
+        }
+        if (charRect.top < boxK.bottom && charRect.bottom > boxK.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxK.top && charRect.top < boxK.top) {
+            down = false;
+        }
+        if(charRect.right > boxK.left && charRect.left < boxK.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxL.right &&
+        charRect.right > boxL.left &&
+        charRect.top < boxL.bottom &&
+        charRect.bottom > boxL.top
+    ) {
+        if (charRect.left < boxL.right && charRect.right > boxL.right) {
+            left = false;
+        }
+        if (charRect.top < boxL.bottom && charRect.bottom > boxL.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxL.top && charRect.top < boxL.top) {
+            down = false;
+        }
+        if(charRect.right > boxL.left && charRect.left < boxL.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxM.right &&
+        charRect.right > boxM.left &&
+        charRect.top < boxM.bottom &&
+        charRect.bottom > boxM.top
+    ) {
+        if (charRect.left < boxM.right && charRect.right > boxM.right) {
+            left = false;
+        }
+        if (charRect.top < boxM.bottom && charRect.bottom > boxM.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxM.top && charRect.top < boxM.top) {
+            down = false;
+        }
+        if(charRect.right > boxM.left && charRect.left < boxM.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxN.right &&
+        charRect.right > boxN.left &&
+        charRect.top < boxN.bottom &&
+        charRect.bottom > boxN.top
+    ) {
+        if (charRect.left < boxN.right && charRect.right > boxN.right) {
+            left = false;
+        }
+        if (charRect.top < boxN.bottom && charRect.bottom > boxN.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxN.top && charRect.top < boxN.top) {
+            down = false;
+        }
+        if(charRect.right > boxN.left && charRect.left < boxN.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxO.right &&
+        charRect.right > boxO.left &&
+        charRect.top < boxO.bottom &&
+        charRect.bottom > boxO.top
+    ) {
+        if (charRect.left < boxO.right && charRect.right > boxO.right) {
+            left = false;
+        }
+        if (charRect.top < boxO.bottom && charRect.bottom > boxO.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxO.top && charRect.top < boxO.top) {
+            down = false;
+        }
+        if(charRect.right > boxO.left && charRect.left < boxO.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxP.right &&
+        charRect.right > boxP.left &&
+        charRect.top < boxP.bottom &&
+        charRect.bottom > boxP.top
+    ) {
+        if (charRect.left < boxP.right && charRect.right > boxP.right) {
+            left = false;
+        }
+        if (charRect.top < boxP.bottom && charRect.bottom > boxP.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxP.top && charRect.top < boxP.top) {
+            down = false;
+        }
+        if(charRect.right > boxP.left && charRect.left < boxP.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxQ.right &&
+        charRect.right > boxQ.left &&
+        charRect.top < boxQ.bottom &&
+        charRect.bottom > boxQ.top
+    ) {
+        if (charRect.left < boxQ.right && charRect.right > boxQ.right) {
+            left = false;
+        }
+        if (charRect.top < boxQ.bottom && charRect.bottom > boxQ.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxQ.top && charRect.top < boxQ.top) {
+            down = false;
+        }
+        if(charRect.right > boxQ.left && charRect.left < boxQ.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxR.right &&
+        charRect.right > boxR.left &&
+        charRect.top < boxR.bottom &&
+        charRect.bottom > boxR.top
+    ) {
+        if (charRect.left < boxR.right && charRect.right > boxR.right) {
+            left = false;
+        }
+        if (charRect.top < boxR.bottom && charRect.bottom > boxR.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxR.top && charRect.top < boxR.top) {
+            down = false;
+        }
+        if(charRect.right > boxR.left && charRect.left < boxR.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxS.right &&
+        charRect.right > boxS.left &&
+        charRect.top < boxS.bottom &&
+        charRect.bottom > boxS.top
+    ) {
+        if (charRect.left < boxS.right && charRect.right > boxS.right) {
+            left = false;
+        }
+        if (charRect.top < boxS.bottom && charRect.bottom > boxS.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxS.top && charRect.top < boxS.top) {
+            down = false;
+        }
+        if(charRect.right > boxS.left && charRect.left < boxS.left) {
+            right = false
+        }
+    }
+    if (
+        charRect.left < boxT.right &&
+        charRect.right > boxT.left &&
+        charRect.top < boxT.bottom &&
+        charRect.bottom > boxT.top
+    ) {
+        if (charRect.left < boxT.right && charRect.right > boxT.right) {
+            left = false;
+        }
+        if (charRect.top < boxT.bottom && charRect.bottom > boxT.bottom) {
+            up = false;
+            
+        }
+        if (charRect.bottom > boxT.top && charRect.top < boxT.top) {
+            down = false;
+        }
+        if(charRect.right > boxT.left && charRect.left < boxT.left) {
+            right = false
+        }
+    }
+}
+
+setInterval(pipes, 10);
+function pipes() {
+    let charRect = char.getBoundingClientRect();
+    let p1 = pipe1.getBoundingClientRect();
+    let p2 = pipe2.getBoundingClientRect();
+    if(charRect.left < p1.right && charRect.right < p1.right) {
+        x = 172
+    }
+    if(charRect.right > p2.left && charRect.left > p2.left) {
+        x = 35
+    }
+}
+function ghosts1() {
+    
+}
+function ghosts2() {
+
+}
+function ghosts3() {
+
 }

@@ -454,7 +454,7 @@ table {
     position: absolute;
     width: 2.5vw;
     height: 30vh;
-    background-color: red;
+    background-color: blue;
     
 }
 #obstacle1-6 {
@@ -598,7 +598,46 @@ table {
     position: absolute;
     width: 2vw;
     height: 2vw;
-    background-color: yellow;
+    background-color: gold;
     left: 35vh;
     top: 50vh;
+}
+#pipe1 {
+    background-color: green;
+    display: none;
+    position: absolute;
+    width: 2vw;
+    height: 11vh;
+    margin-left: 15vw;
+    margin-top: -0.5vh;
+}
+#pipe2 {
+    background-color: green;
+    display: none;
+    position: absolute;
+    width: 2vw;
+    height: 11vh;
+    margin-left: 83vw;
+    margin-top: -0.5vh;
+}
+#ghost1 {
+    background-color: red;
+    width: 2vw;
+    height: 2vw;
+    position: absolute;
+    display: none;
+}
+#ghost2 {
+    background-color: orange;
+    width: 2vw;
+    height: 2vw;
+    position: absolute;
+    display: none;
+}
+#ghost3 {
+    background-color: purple;
+    width: 2vw;
+    height: 2vw;
+    position: absolute;
+    display: none;
 }
