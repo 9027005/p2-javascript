@@ -69,6 +69,9 @@ let box18 = document.getElementById("obstacle2-12")
 let box19 = document.getElementById("obstacle2-13")
 let box20 = document.getElementById("obstacle2-14")
 
+let levelSelect = new Audio("./sounds/levelBtn.mp3")
+let startup = new Audio("./sounds/startBtn.mp3")
+
 
 window.addEventListener('keypress', function(e){
     console.log(e.code)
@@ -78,6 +81,7 @@ window.addEventListener('keypress', function(e){
         screenGrow()
         gameStart = true
         started = true
+        startup.play()
     }
 
     if(e.code == "KeyW" && level) {
@@ -174,13 +178,13 @@ possibleChoices.forEach(button => button.addEventListener('click', (e) => {
     console.log(choice)
     if(choice == "easy") {
         level1()
-        
+        levelSelect.play()
     } else if(choice == "medium") {
         level2()
-        
+        levelSelect.play()
     } else if(choice == "hard") {
         level3()
-        
+        levelSelect.play()
     }
 }))
 
@@ -646,9 +650,17 @@ const ghostTime = setInterval(() => {
         let g1 = ghost1.getBoundingClientRect()
 
         if(g1.right < charRect.right) {
-            rX += 0.3
+            if(scoreCounter < 2000) {
+                rX += 0.3
+            }else {
+                rX += 0.5
+            }
         } else if(g1.right > charRect.right) {
-            rX -= 0.3
+            if(scoreCounter <= 2000) {
+                rX -= 0.3
+            }else  {
+                rX -= 0.5
+            }
         }
         if (g1.top > charRect.top) {
             rY -= 0.3
@@ -670,9 +682,17 @@ const ghostTime = setInterval(() => {
         let g2 = ghost2.getBoundingClientRect()
 
         if(g1.right < charRect.right) {
-            rX += 0.3
+            if(scoreCounter < 2000) {
+                rX += 0.3
+            }else {
+                rX += 0.5
+            }
         } else if(g1.right > charRect.right) {
-            rX -= 0.3
+            if(scoreCounter <= 2000) {
+                rX -= 0.3
+            }else  {
+                rX -= 0.5
+            }
         }
         if (g1.top > charRect.top) {
             rY -= 0.3
@@ -680,9 +700,17 @@ const ghostTime = setInterval(() => {
             rY += 0.3
         }
         if(g2.right < charRect.right) {
-            bX += 0.2
+            if(scoreCounter <= 2000) {
+                bX += 0.2
+            } else {
+                bX += 0.4
+            }
         } else if(g2.right > charRect.right) {
-            bX -= 0.2
+            if(scoreCounter <= 2000) {
+                bX -= 0.2
+            } else {
+                bX -= 0.4
+            }
         }
         if (g2.top > charRect.top) {
             bY -= 0.2
@@ -708,9 +736,17 @@ const ghostTime = setInterval(() => {
         let g3 = ghost3.getBoundingClientRect()
 
         if(g1.right < charRect.right) {
-            rX += 0.3
+            if(scoreCounter < 2000) {
+                rX += 0.3
+            }else {
+                rX += 0.5
+            }
         } else if(g1.right > charRect.right) {
-            rX -= 0.3
+            if(scoreCounter <= 2000) {
+                rX -= 0.3
+            }else  {
+                rX -= 0.5
+            }
         }
         if (g1.top > charRect.top) {
             rY -= 0.3
@@ -718,9 +754,17 @@ const ghostTime = setInterval(() => {
             rY += 0.3
         }
         if(g2.right < charRect.right) {
-            bX += 0.2
+            if(scoreCounter <= 2000) {
+                bX += 0.2
+            } else {
+                bX += 0.4
+            }
         } else if(g2.right > charRect.right) {
-            bX -= 0.2
+            if(scoreCounter <= 2000) {
+                bX -= 0.2
+            } else {
+                bX -= 0.4
+            }
         }
         if (g2.top > charRect.top) {
             bY -= 0.2
@@ -728,9 +772,17 @@ const ghostTime = setInterval(() => {
             bY += 0.2
         }
         if(g3.right < charRect.right) {
-            pX += 0.05
+            if(scoreCounter <= 2500) {
+                pX += 0.05
+            } else {
+                pX += 1
+            }
         } else if(g3.right > charRect.right) {
-            pX -= 0.05
+            if(scoreCounter <= 2500) {
+                pX -= 0.05
+            } else {
+                pX -= 1
+            }
         }
         if (g3.top > charRect.top) {
             pY -= 0.05
@@ -769,19 +821,23 @@ function lose() {
         charRect.top < g1.bottom &&
         charRect.bottom > g1.top
     ) {
-        if (charRect.left < g1.right && charRect.right > g1.right) {
-            lost = true
-        }
-        if (charRect.top < g1.bottom && charRect.bottom > g1.bottom) {
-            lost = true
-            
-        }
-        if (charRect.bottom > g1.top && charRect.top < g1.top) {
-            lost = true
-        }
-        if(charRect.right > g1.left && charRect.left < g1.left) {
-            lost = true
-        }
+        lost = true
+    }
+    if (
+        charRect.left < g2.right &&
+        charRect.right > g2.left &&
+        charRect.top < g2.bottom &&
+        charRect.bottom > g2.top
+    ) {
+        lost = true
+    }
+    if (
+        charRect.left < g3.right &&
+        charRect.right > g3.left &&
+        charRect.top < g3.bottom &&
+        charRect.bottom > g3.top
+    ) {
+        lost = true
     }
     if(lost) {
         window.location.reload()
